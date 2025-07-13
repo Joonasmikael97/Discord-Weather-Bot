@@ -6,18 +6,19 @@ import os
 import requests
 import webserver
 
-# Load environment variables
+
 load_dotenv()
 token = os.getenv('DISCORD_TOKEN')
 weather_api_key = os.getenv('WEATHER_API_KEY')
 
-# Logging
+
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
 
-# Bot setup
+
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
+
 
 bot = commands.Bot(command_prefix='!', intents=intents)
 
@@ -27,9 +28,8 @@ async def on_ready():
 
 @bot.command()
 async def weather(ctx, *, city: str = None):
-    print(f"Weather command triggered by {ctx.author} for city: {city}")  # Debug line
     if city is None:
-        await ctx.send("🌍 Please provide a city name. Example: `!weather London`")
+        await ctx.send("🌍 Please provide a city name. Example: !weather London")
         return
 
     url = f"http://api.weatherapi.com/v1/current.json?key={weather_api_key}&q={city}"
@@ -47,6 +47,7 @@ async def weather(ctx, *, city: str = None):
         temp_c = data["current"]["temp_c"]
         feels_like = data["current"]["feelslike_c"]
         condition = data["current"]["condition"]["text"]
+        icon_url = f"https:{data['current']['condition']['icon']}"
 
         await ctx.send(
             f"🌤️ **Weather in {location}, {country}**\n"
@@ -58,7 +59,7 @@ async def weather(ctx, *, city: str = None):
     except Exception as e:
         await ctx.send("⚠️ Failed to fetch weather.")
         print(f"Error fetching weather: {e}")
-
-if __name__ == '__main__':
-    webserver.keep_alive()
-    bot.run(token, log_handler=handler, log_level=logging.DEBUG)
+        
+        
+webserver.keep_alive()
+bot.run(token, log_handler=handler, log_level=logging.DEBUG)
