@@ -4,6 +4,7 @@ import logging
 from dotenv import load_dotenv
 import os
 import requests
+import webserver
 
 
 load_dotenv()
@@ -58,5 +59,7 @@ async def weather(ctx, *, city: str = None):
     except Exception as e:
         await ctx.send("⚠️ Failed to fetch weather.")
         print(f"Error fetching weather: {e}")
-
+        
+        
+webserver.keep_alive()
 bot.run(token, log_handler=handler, log_level=logging.DEBUG)
