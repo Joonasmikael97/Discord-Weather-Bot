@@ -1,6 +1,6 @@
 # DOCUMENTATION LINKS
 
 
-LINKS:
-https://www.weatherapi.com/docs/
-https://discordpy.readthedocs.io/en/stable/
+<span>LINKS:</span><br>
+<span>https://www.weatherapi.com/docs/</span><br>
+<span>https://discordpy.readthedocs.io/en/stable/</span>
