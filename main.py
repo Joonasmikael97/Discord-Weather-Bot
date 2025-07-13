@@ -73,9 +73,14 @@ async def weather(ctx, *, city: str = None):
                 break
 
         embed = discord.Embed(
-            title=f"Sää {location}, {country}",
-            description=f"📌 {condition}\n🌡️ {temp_c}°C (Tuntuu kuin {feels_like}°C)\n\n _{quote}_",
-            color=0x1abc9c
+        title=f"☀️ Weather in {location}, {country}",
+        description=(
+            f"Condition: {condition}\n"
+            f"Temperature: {temp_c}°C\n"
+            f"Feels like: {feels_like}°C\n\n"
+            f"📢 _{quote}_"
+        ),
+        color=0x1abc9c
         )
         embed.set_thumbnail(url=icon_url)
 
