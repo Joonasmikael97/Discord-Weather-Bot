@@ -48,7 +48,6 @@ async def weather(ctx, *, city: str = None):
 
         print(f"DEBUG: Säätila API:sta: {condition}")  # Tulostetaan debugiksi
 
-        # Pekka Poudan lausahdukset laajennetulla avainsanavalikoimalla
         weather_quotes = {
             "rain": "Vettä tulee kuin Esterin sieltä!",
             "light rain": "Kevyt sade, mutta muista silti sateenvarjo!",
