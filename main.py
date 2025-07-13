@@ -78,7 +78,7 @@ async def weather(ctx, *, city: str = None):
             f"Condition: {condition}\n"
             f"Temperature: {temp_c}°C\n"
             f"Feels like: {feels_like}°C\n\n"
-            f"📢 _{quote}_"
+            f":🤓 _{quote}_"
         ),
         color=0x1abc9c
         )
